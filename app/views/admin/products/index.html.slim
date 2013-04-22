@@ -1,0 +1,25 @@
+- if notice
+  p= notice
+
+h2 Products:
+
+p
+  strong= link_to "Novo produto", new_admin_product_path, class: "btn btn-primary"
+table.table
+  table.table.table-bordered.table-striped
+    tr
+      th Nome do produto
+      th Valor
+      th Custo
+      th Venda
+      th opções
+    - @products.each do |product|
+      tr
+        td= link_to product.name, [:admin, product]
+        td= product.value
+        td
+        td
+        td
+          = link_to "Editar", edit_admin_product_path(product), class: "btn"
+          = link_to "Deletar", admin_product_path(product), method: :delete, class: "btn btn-danger" 
+        

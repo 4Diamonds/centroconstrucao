@@ -1,0 +1,68 @@
+doctype 5
+html
+  head
+  title Centroconstrucao
+  = stylesheet_link_tag    "application", :media => "all" 
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+  body
+    container
+      nav.navbar
+        nav.navbar-inner
+          nav.pull-right
+            ul.nav
+              li
+                nav.form-search
+                  input.input-medium.search-query type="text"
+                    button.btn type="submit"
+              li
+                test
+              li  
+                a.brand #{current_admin.name}
+              li
+                = link_to image_tag("cash.png", :size => "20x20", :alt => "Sua Conta"), destroy_admin_session_path, title: 'Sua Conta', method: :delete   
+              li
+                = link_to image_tag("settings.png", :size => "20x20"),title: 'Configurações' 
+              li
+                = link_to image_tag("exit.png", :size => "20x20", :alt => "Exit"), destroy_admin_session_path, title: 'Logout', method: :delete  
+    row.row-fluid
+      row.span9
+      row.span3
+        row.pull-right
+          small Hello, #{current_admin.name}
+    row.row-fluid   
+      row.span1
+      row.span10
+        #header
+          h1 Administração
+          p
+        container
+          nav.navbar
+            nav.navbar-inner
+              container    
+                a.btn.btn-navbar data-target="nav.nav-collapse" data-toggle="collapse"
+                a.brand Menu
+                ul.nav
+                  li
+                    nav.nav-collapse.collapse
+                      = link_to "Clientes", admin_customers_path
+                  li
+                    = link_to "Produtos", admin_products_path
+                  li
+                    = link_to "Vendas" 
+                  li
+                    = link_to "Caixa"
+                  li
+                    = link_to "Usuarios"
+                  li
+                    = link_to "Produtos"
+                  li
+                    = link_to "Contabilidade"
+                  li
+                    = link_to "Fornecedores"
+                  li
+                    = link_to "Produção"             
+        #content= yield
+        #footer
+          small Centro da Construção 2013.
+      row.span1 

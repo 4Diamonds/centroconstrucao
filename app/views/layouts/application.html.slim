@@ -1,0 +1,34 @@
+doctype 5
+html
+  head
+  title Centroconstrucao
+  = stylesheet_link_tag    "application", :media => "all" 
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+  body
+    #header
+      h1 Loja Virtual CDC
+    container
+      nav.navbar
+        nav.navbar-inner
+          a.brand Menu
+          ul.nav
+            li
+              = link_to 'Home',root_path
+            li  
+              = link_to 'Compra'
+            li  
+              = link_to 'Credito'
+            li  
+              = link_to 'logout', destroy_customer_session_path, title: 'Logout', method: :delete
+    #wrapper.clearfix
+      #twocols
+        #maincol=yield
+        #rightcol
+          h2 right Column
+      #leftcol
+        h2 Left Column
+    #footer
+      h2 Footer
+
+  

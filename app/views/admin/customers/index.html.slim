@@ -1,0 +1,21 @@
+- if notice
+  p= notice
+
+h2 Clientes:
+
+p
+  strong= link_to "Novo cliente", new_admin_customer_path, class: "btn btn-large btn-success"
+table.table.table-bordered.table-striped
+  tr
+    th Nome do cliente
+    th Telefone
+    th Email
+    th Opçoes
+  - @customers.each do |customer|
+    tr
+      td= link_to customer.name, [:admin, customer]
+      td= customer.tel
+      td= customer.email
+      td
+        = link_to "Editar", edit_admin_customer_path(customer), class: "btn"
+        = link_to "Deletar", admin_customer_path(customer), method: :delete, class: "btn btn-danger"
