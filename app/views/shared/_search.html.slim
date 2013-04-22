@@ -1,0 +1,4 @@
+nav.form-search
+  = simple_form_for :search, url: admin_path do |f|
+    = f.input :term, input_html: {class: "input-medium search-query"}, label: false
+    = f.submit "Buscar", class: "btn"

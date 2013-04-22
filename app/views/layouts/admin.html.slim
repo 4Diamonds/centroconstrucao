@@ -2,7 +2,7 @@ doctype 5
 html
   head
   title Centroconstrucao
-  = stylesheet_link_tag    "application", :media => "all" 
+  = stylesheet_link_tag    "application", "bootstrap", :media => "all" 
   = javascript_include_tag "application"
   = csrf_meta_tags
   body
@@ -11,20 +11,10 @@ html
         nav.navbar-inner
           nav.pull-right
             ul.nav
-              li
-                nav.form-search
-                  input.input-medium.search-query type="text"
-                    button.btn type="submit"
-              li
-                test
-              li  
-                a.brand #{current_admin.name}
-              li
-                = link_to image_tag("cash.png", :size => "20x20", :alt => "Sua Conta"), destroy_admin_session_path, title: 'Sua Conta', method: :delete   
-              li
-                = link_to image_tag("settings.png", :size => "20x20"),title: 'Configurações' 
-              li
-                = link_to image_tag("exit.png", :size => "20x20", :alt => "Exit"), destroy_admin_session_path, title: 'Logout', method: :delete  
+              li= render '/shared/search'
+              li= link_to image_tag("cash.png", :size => "20x20", :alt => "Sua Conta"), destroy_admin_session_path, title: 'Sua Conta', method: :delete   
+              li= link_to image_tag("settings.png", :size => "20x20"),title: 'Configurações' 
+              li= link_to image_tag("exit.png", :size => "20x20", :alt => "Exit"), destroy_admin_session_path, title: 'Logout', method: :delete             
     row.row-fluid
       row.span9
       row.span3
@@ -38,31 +28,18 @@ html
           p
         container
           nav.navbar
-            nav.navbar-inner
-              container    
-                a.btn.btn-navbar data-target="nav.nav-collapse" data-toggle="collapse"
-                a.brand Menu
-                ul.nav
-                  li
-                    nav.nav-collapse.collapse
-                      = link_to "Clientes", admin_customers_path
-                  li
-                    = link_to "Produtos", admin_products_path
-                  li
-                    = link_to "Vendas" 
-                  li
-                    = link_to "Caixa"
-                  li
-                    = link_to "Usuarios"
-                  li
-                    = link_to "Produtos"
-                  li
-                    = link_to "Contabilidade"
-                  li
-                    = link_to "Fornecedores"
-                  li
-                    = link_to "Produção"             
+            navbar
+              .navbar
+                .navbar-inner
+                  .container
+                    = link_to admin_path, class: "btn btn-navbar", "data-toggle" => "collapse",  "data-target" => ".nav-collapse" do
+                      span.icon-bar
+                    ul.nav
+                      li.dropdown
+                        = link_to "Dropdown <b class='caret'></b>".html_safe, admin_path, class: "dropdown-toggle", "data-toggle" => "dropdown"
+                        ul.dropdown-menu
+                          li= link_to "Action"              
+                
         #content= yield
         #footer
           small Centro da Construção 2013.
-      row.span1 
